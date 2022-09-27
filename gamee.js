@@ -156,21 +156,18 @@ Array.from(boxes).forEach(element => {
     let boxtext = element.querySelector('.boxtext');
     element.addEventListener('click',()=>{
         let pos = element.id.substring(3);
-        //console.log(element.id.substring(3));
+        
         if(boxtext.innerText === "" && !gameover)
         {
             boxtext.innerText = turn;
-            console.log(pos);
+           
             board[pos] = "X";
-            console.log(board[1]);
+           
             tab.play();
-           // turn = changeTurn();
+           
             checkForWin();
             
-            for(let i=0; i<9; i++)
-                if(board[i]==="")
-                console.log(i);
-            console.log(isMovesLeft());
+           
             if(isMovesLeft())
             {
                 let best= -1000;
@@ -201,6 +198,12 @@ Array.from(boxes).forEach(element => {
                 boxtest.innerText = "O";
                 checkForWin();
 
+            }
+            else
+            {
+                let win = document.getElementById('win');
+                win.innerHTML = "Match Draw";
+                win.style.display = 'block';
             }
            
         }
